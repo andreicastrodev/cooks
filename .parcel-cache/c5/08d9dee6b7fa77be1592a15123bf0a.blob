@@ -1,0 +1,57 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _View = _interopRequireDefault(require("./View.js"));
+
+var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class SearchView {
+  constructor() {
+    _defineProperty(this, "_parentElement", document.querySelector(".search"));
+  }
+
+  getQuery() {
+    const query = this._parentElement.querySelector(".search__input").value;
+
+    this._clearInput();
+
+    return query;
+  }
+
+  _clearInput() {
+    this._parentElement.querySelector(".search__input").value = "";
+  }
+
+  addHandlerSearch(handler) {
+    this._parentElement.addEventListener(`submit`, function (e) {
+      e.preventDefault();
+      const section1 = document.querySelector(`.content`);
+      section1.scrollIntoView({
+        behavior: "smooth"
+      });
+      (0, _animeEs.default)({
+        targets: `.content__preview`,
+        easing: "easeOutExpo",
+        duration: 1000,
+        opacity: [0, 1],
+        delay: (el, i) => {
+          return 1000 + 500 * i;
+        }
+      });
+      handler();
+    });
+  }
+
+}
+
+var _default = new SearchView();
+
+exports.default = _default;

@@ -1,0 +1,129 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _View = _interopRequireDefault(require("./View.js"));
+
+var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class AnimationView extends _View.default {
+  constructor() {
+    super();
+    this.AnimateSidebar();
+    this.AnimateSidebarContent();
+    this.AnimateNav();
+    this.AnimateLandingImg();
+    this.AnimateLandingHeading();
+    this.AnimateLandingSpan();
+  }
+
+  AnimateSidebar() {
+    (0, _animeEs.default)({
+      targets: `.sidebar`,
+      translateX: [-400, 0],
+      easing: "easeOutExpo",
+      duration: 1000,
+      opacity: [0, 1]
+    });
+  }
+
+  AnimateSidebarContent() {
+    (0, _animeEs.default)({
+      targets: `.sidebar__box`,
+      easing: "easeOutExpo",
+      duration: 500,
+      translateX: [-400, 0],
+      delay: (el, i) => {
+        return 1000 + 250 * i;
+      }
+    });
+  }
+
+  AnimateNav() {
+    (0, _animeEs.default)({
+      targets: `.navAnim`,
+      translateY: [-400, 0],
+      easing: "easeOutExpo",
+      duration: 500,
+      delay: (el, i) => {
+        return 1000 + 150 * i;
+      }
+    });
+  }
+
+  AnimateResults() {
+    (0, _animeEs.default)({
+      targets: `.content__preview`,
+      easing: "easeOutExpo",
+      opacity: [0, 1],
+      delay: (el, i) => {
+        return 1000 + 250 * i;
+      }
+    });
+  }
+
+  AnimateLandingImg() {
+    (0, _animeEs.default)({
+      targets: `.landing__img`,
+      easing: "easeOutExpo",
+      translateX: [800, 0],
+      delay: 2000,
+      duration: 1500
+    });
+  }
+
+  AnimateLandingHeading() {
+    (0, _animeEs.default)({
+      targets: `.landing__header`,
+      easing: "easeOutExpo",
+      opacity: [0, 1],
+      delay: 3000,
+      duration: 1000
+    });
+  }
+
+  AnimateLandingSpan() {
+    (0, _animeEs.default)({
+      targets: `.landing__span`,
+      easing: "easeOutExpo",
+      opacity: [0, 1],
+      delay: 4000,
+      duration: 1000
+    });
+  }
+
+  AnimatePopups() {
+    (0, _animeEs.default)({
+      targets: `.overlay `,
+      easing: "easeOutExpo",
+      opacity: [0, 1],
+      duration: 200,
+      begin: function () {
+        document.querySelector(".overlay").style.visibility = `visible`;
+      }
+    });
+  }
+
+  AnimatePopupContent() {
+    (0, _animeEs.default)({
+      targets: `.popup__content `,
+      easing: "easeOutExpo",
+      opacity: [0, 1],
+      delay: 700,
+      duration: 200,
+      begin: function () {
+        document.querySelector(".popup__content").style.visibility = `visible`;
+      }
+    });
+  }
+
+}
+
+var _default = new AnimationView();
+
+exports.default = _default;

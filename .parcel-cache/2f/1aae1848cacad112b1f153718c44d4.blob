@@ -1,0 +1,59 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _View = _interopRequireDefault(require("./View.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class ResultView extends _View.default {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "_parentElement", document.querySelector(".content__content"));
+  }
+
+  _generateMarkup() {
+    return this._data.map().join("");
+  }
+
+  _generateMarkupPreview() {
+    return `
+         <div class="content__preview">
+            <img src="src/img/food-1.jpg" alt="img1" class="content__img" />
+            <div class="content__title">
+              <h3 class="header-2 publisher">Ryan Jones</h3>
+              <span class="span-3 title">Delicious muffins</span>
+            </div>
+
+            <div class="content__info">
+              <div class="content__durationBlock">
+                <svg class="content__icon content__icon--1">
+                  <use href="src/img/sprite.svg#icon-stopwatch"></use>
+                </svg>
+                <span class="span-3 span-3--duration duration ml-small"
+                  >30 mins</span
+                >
+              </div>
+              <div class="content__servingBlock">
+                <svg class="content__icon content__icon--2">
+                  <use href="src/img/sprite.svg#icon-users"></use>
+                </svg>
+                <span class="span-3 span-3--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+
+      `;
+  }
+
+}
+
+var _default = new ResultView();
+
+exports.default = _default;

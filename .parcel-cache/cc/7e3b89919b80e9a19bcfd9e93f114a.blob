@@ -1,0 +1,156 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _View = _interopRequireDefault(require("./View.js"));
+
+var _sprite = _interopRequireDefault(require("url:../../img/sprite.svg"));
+
+var _fractional = require("fractional");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class RecipeView extends _View.default {
+  constructor() {
+    super();
+
+    _defineProperty(this, "_parentElement", document.querySelector(".popup__content"));
+
+    _defineProperty(this, "_overlay", document.querySelector(`.overlay`));
+
+    _defineProperty(this, "_data", void 0);
+
+    _defineProperty(this, "_errorMessage", `No recipe found, try another one`);
+
+    _defineProperty(this, "_message", " ");
+
+    this.hideWindow();
+    this.removeHashOnLoad();
+    this.showNav();
+  }
+
+  addHandlerUpdateServings(handler) {
+    this._parentElement.addEventListener(`click`, function (e) {
+      const btn = e.target.closest(`.btn--controller`);
+      if (!btn) return;
+      const updateTo = +btn.dataset.updateTo;
+
+      if (updateTo > 0) {
+        handler(updateTo);
+      }
+    });
+  }
+
+  showNav() {
+    const nav = document.querySelector(`.sticky`);
+    const header = document.querySelector(`.landing`);
+    const navHeight = nav.getBoundingClientRect().height;
+
+    const stickyNav = function (entries) {
+      const [entry] = entries;
+      if (!entry.isIntersecting) nav.classList.add(`sticky`);else nav.classList.remove(`sticky`);
+    };
+
+    const headerObserver = new IntersectionObserver(stickyNav, {
+      root: null,
+      threshold: 0,
+      rootMargin: `-${navHeight}px`
+    });
+    headerObserver.observe(header);
+  }
+
+  showWindow() {
+    this._overlay.classList.remove(`hidden`);
+
+    this._parentElement.classList.remove(`hidden`);
+  }
+
+  hide() {
+    this._overlay.classList.add(`hidden`);
+
+    this._parentElement.classList.add(`hidden`);
+  }
+
+  hideWindow() {
+    this._overlay.addEventListener(`click`, this.hide.bind(this));
+  }
+
+  removeHashOnLoad() {
+    document.location.hash = "";
+  }
+
+  _generateMarkup() {
+    return `
+            <figure class="popup__fig">
+          <img src="${this._data.image}" alt="${this._data.title}" class="popup__img" />
+        </figure>
+        <div class="popup__title">
+          <h1 class="header-2 header-2--sp mr-small">${this._data.title}</h1>
+        </div>
+        <div class="popup__controller">
+          <div class="popup__durationBlock">
+            <svg class="popup__icon popup__icon--1">
+              <use href="${_sprite.default}#icon-stopwatch"></use>
+            </svg>
+            <span class="span-3 span-3--duration duration ml-small"
+              >${this._data.cookingTime} mins</span
+            >
+          </div>
+          <div class="popup__servingBlock">
+            <svg class="popup__icon popup__icon--2">
+              <use href="${_sprite.default}#icon-users"></use>
+            </svg>
+            <span class="span-3 span-3--servings servings ml-small">${this._data.servings}</span>
+            <div class="popup__btns ml-small">
+              <button class="btn--add btn--controller" data-update-to="${this._data.servings + 1}">
+                <svg class="popup__icon popup__icon--3">
+                  <use href="${_sprite.default}#icon-plus"></use>
+                </svg>
+              </button>
+
+              <button class="btn--minus btn--controller" data-update-to="${this._data.servings - 1}">
+                <svg class="popup__icon popup__icon--3">
+                  <use href="${_sprite.default}#icon-minus"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button class="btn--book">
+            <svg class="popup__icon popup__icon--3">
+              <use href="${_sprite.default}#icon-bookmark"></use>
+            </svg>
+          </button>
+        </div>
+
+        <div class="popup__ingredients">
+          <h2 class="header-2">Ingredients</h2>
+          <ul class="popup__ingredients--list">
+          ${this._data.ingredients.map(this._generateMarkupIngredient).join("")}
+
+          </ul>
+        </div>
+        <div class="popup__directions">
+          <a href="${this._data.sourceUrl}" target="_blank" class="btn--direction popup__btn mb-small"><span>Directions</span></a>
+        </div>
+    `;
+  }
+
+  _generateMarkupIngredient(ing) {
+    return `
+            <li class="popup__recipe">
+              <div class="popup__quantity">${ing.quantity ? new Fraction(ing.quantity).toString() : ""}</div>
+              <div class="popup__description">${ing.unit} ${ing.description}</div>
+            </li>            
+            `;
+  }
+
+}
+
+var _default = new RecipeView();
+
+exports.default = _default;

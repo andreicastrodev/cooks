@@ -1,0 +1,69 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _View = _interopRequireDefault(require("./View.js"));
+
+var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class AnimationView extends _View.default {
+  constructor() {
+    super();
+    this.AnimateSidebar();
+    this.AnimateSidebarContent(); // this.AnimateNav();
+  }
+
+  AnimateSidebar() {
+    (0, _animeEs.default)({
+      targets: `.sidebar`,
+      translateX: [-400, 0],
+      easing: "easeOutExpo",
+      duration: 1000,
+      opacity: [0, 1]
+    });
+  }
+
+  AnimateSidebarContent() {
+    (0, _animeEs.default)({
+      targets: `.sidebar__box`,
+      easing: "easeOutExpo",
+      duration: 1000,
+      translateX: [-400, 0],
+      delay: (el, i) => {
+        return 1000 + 500 * i;
+      }
+    });
+  }
+
+  AnimateNav() {
+    (0, _animeEs.default)({
+      targets: `.nav`,
+      translateY: [-400, 0],
+      easing: "easeOutExpo",
+      duration: 2000,
+      delay: 1000,
+      opacity: [0, 1]
+    });
+  }
+
+  AnimateResults() {
+    (0, _animeEs.default)({
+      targets: `.content__preview`,
+      easing: "easeOutExpo",
+      opacity: [0, 1],
+      delay: (el, i) => {
+        return 1000 + 500 * i;
+      }
+    });
+  }
+
+}
+
+var _default = new AnimationView();
+
+exports.default = _default;

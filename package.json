@@ -1,0 +1,36 @@
+{
+  "name": "cookit",
+  "version": "1.0.0",
+  "homepage": "https//andreicastrodev.github.io/cookit",
+  "description": "Recipe App",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "node-sass src/sass/main.scss src/css/style.css -w",
+    "devserver": "live-server --browser=firefox",
+    "start": "npm-run-all --parallel devserver watch:sass",
+    "compile:sass": "node-sass src/sass/main.scss src/css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" src/css/style.comp.css -o src/css/style.prefix.css",
+    "compress:css": "node-sass src/css/style.prefix.css src/css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css",
+    "parcel:start": "parcel index.html",
+    "build:parcel": "parcel build index.html",
+    "predeploy": "npm run build:parcel",
+    "deploy": "gh-pages -d build"
+  },
+  "author": "andydev",
+  "license": "ISC",
+  "devDependencies": {
+    "animejs": "^3.2.1",
+    "autoprefixer": "^7.1.4",
+    "concat": "^1.0.3",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
+    "parcel": "^2.0.0-beta.1",
+    "postcss-cli": "^4.1.1"
+  },
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "fractional": "^1.0.0",
+    "regenerator-runtime": "^0.13.7"
+  }
+}

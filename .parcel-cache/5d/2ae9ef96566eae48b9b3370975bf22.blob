@@ -1,0 +1,113 @@
+const recipeContainer = document.querySelector(".recipe");
+
+const timeout = function (s) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error(`Request took too long! Timeout after ${s} second`));
+    }, s * 1000);
+  });
+}; // https://forkify-api.herokuapp.com/v2
+///////////////////////////////////////
+
+
+const showRecipe = async function () {
+  try {
+    const res = await fetch("https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886");
+    const data = await res.json();
+    if (!res.ok) throw new Error(`${data.message} ${res.status}`);
+    console.log(res, data);
+    let {
+      recipe
+    } = data.data;
+    recipe = {
+      id: recipe.id,
+      title: recipe.title,
+      publisher: recipe.publisher,
+      sourceUrl: recipe.source_url,
+      image: recipe.image_url,
+      servings: recipe.servings,
+      cookingTime: recipe.cooking_time,
+      ingredients: recipe.ingredients
+    };
+    console.log(recipe);
+    const markup = `
+            <figure class="popup__fig">
+          <img src="${recipe.image}" alt="${recipe.title}" class="popup__img" />
+        </figure>
+        <div class="popup__title">
+          <h1 class="header-2 header-2--sp mr-small">${recipe.title}</h1>
+          <span class="span-1">${recipe.publisher}</span>
+        </div>
+        <div class="popup__controller">
+          <div class="popup__durationBlock">
+            <svg class="popup__icon popup__icon--1">
+              <use href="src/img/sprite.svg#icon-stopwatch"></use>
+            </svg>
+            <span class="span-3 span-3--duration duration ml-small"
+              >${recipe.cookingTime} mins</span
+            >
+          </div>
+          <div class="popup__servingBlock">
+            <svg class="popup__icon popup__icon--2">
+              <use href="src/img/sprite.svg#icon-users"></use>
+            </svg>
+            <span class="span-3 span-3--servings servings ml-small">${recipe.servings}</span>
+            <div class="popup__btns ml-small">
+              <button class="btn--add btn--controller">
+                <svg class="popup__icon popup__icon--3">
+                  <use href="src/img/sprite.svg#icon-plus"></use>
+                </svg>
+              </button>
+
+              <button class="btn--minus btn--controller">
+                <svg class="popup__icon popup__icon--3">
+                  <use href="src/img/sprite.svg#icon-minus"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button class="btn--book">
+            <svg class="popup__icon popup__icon--3">
+              <use href="src/img/sprite.svg#icon-bookmark"></use>
+            </svg>
+          </button>
+        </div>
+
+        <div class="popup__ingredients">
+          <h2 class="header-2">Ingredients</h2>
+          <ul class="popup__ingredients--list">
+            <li class="popup__recipe">
+              <div class="popup__quantity">1</div>
+              <div class="popup__description">tbsp. canola or olive oil</div>
+            </li>
+            <li class="popup__recipe">
+              <div class="popup__quantity">2</div>
+              <div class="popup__description">tbsp. canola or olive oil</div>
+            </li>
+            <li class="popup__recipe">
+              <div class="popup__quantity">3</div>
+              <div class="popup__description">tbsp. canola or olive oil</div>
+            </li>
+            <li class="popup__recipe">
+              <div class="popup__quantity">4</div>
+              <div class="popup__description">tbsp. canola or olive oil</div>
+            </li>
+            <li class="popup__recipe">
+              <div class="popup__quantity">6</div>
+              <div class="popup__description">tbsp. canola or olive oil</div>
+            </li>
+          </ul>
+        </div>
+        <div class="popup__directions">
+          <a href="${recipe.sourceUrl}" target="_blank" class="btn--direction popup__btn"><span>Directions</span></a>
+        </div>
+    
+    
+    
+    `;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+showRecipe();

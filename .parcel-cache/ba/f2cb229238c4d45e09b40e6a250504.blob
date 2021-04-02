@@ -1,0 +1,74 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _sprite = _interopRequireDefault(require("url:../../img/sprite.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// parcel 2
+class View {
+  constructor() {
+    _defineProperty(this, "_data", void 0);
+
+    _defineProperty(this, "renderSpinner", function () {
+      const markup = `
+<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  `;
+      this._parentElement.innerHTML = ``;
+
+      this._parentElement.insertAdjacentHTML(`afterbegin`, markup);
+    });
+  }
+
+  render(data) {
+    if (!data) return this.renderError();
+    this._data = data;
+
+    const markup = this._generateMarkup();
+
+    this._clear();
+
+    this._parentElement.insertAdjacentHTML(`afterbegin`, markup);
+  }
+
+  _clear() {
+    this._parentElement.innerHTML = "";
+  }
+
+  addHandlerRender(handler) {
+    ["hashchange", `load`].forEach(e => window.addEventListener(e, handler));
+  }
+
+  renderError(message = this._errorMessage) {
+    const markup = `
+      <div class="err">
+        <h1 class="header-2">${message}</h1>
+      </div>
+    `;
+
+    this._clear();
+
+    this._parentElement.insertAdjacentHTML(`afterbegin`, markup);
+  }
+
+  renderMessage(message = this._message) {
+    const markup = `
+      <div class="err">
+        <h1 class="header-2">${message}</h1>
+      </div>
+    `;
+
+    this._clear();
+
+    this._parentElement.insertAdjacentHTML(`afterbegin`, markup);
+  }
+
+}
+
+exports.default = View;

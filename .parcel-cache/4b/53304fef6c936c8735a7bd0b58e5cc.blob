@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="da9afb61e15e5caa1c8af2c6f046c478">
+    <link href="ce9da7bc1986517394313d55cf58b05b" rel="stylesheet">
+    <link rel="stylesheet" href="7b6dbcd09039560f394068d445f6edcd">
+    <script defer="" src="9e58044eb023ac0cb64933ff0bfdef79"></script>
+    <title>CookIt - Your Cooking Companion</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- <nav class="sticky hidden">
+        <div class="sticky__header">
+          <h1 class="header-1">Cook It</h1>
+        </div>
+
+        <form class="search">
+          <input
+            class="search__input"
+            type="text"
+            placeholder="ready for yummy recipes?"
+          />
+        </form>
+
+        <svg class="sticky__icon">
+          <use href="src/img/sprite.svg#icon-bookmark"></use>
+        </svg>
+      </nav> -->
+
+      <div class="sidebar">
+        <div class="sidebar__header">
+          <h1 class="header-1">Cook It</h1>
+          <span class="span-1">Recipes of the day !</span>
+        </div>
+
+        <div class="sidebar__content">
+          <div class="sidebar__box sidebar__box--1">
+            <img src="b1405016666d17283135745ddec55580" alt="img1" class="sidebar__img">
+            <div class="sidebar__title">
+              <h3 class="header-3 publisher">Ashley Williams</h3>
+              <span class="span-2 title">Double burger</span>
+            </div>
+            <div class="sidebar__info">
+              <div class="sidebar__durationBlock">
+                <svg class="sidebar__icon sidebar__icon--1">
+                  <use href="ca7432ec7108c25add9ae0aece4e78b3"></use>
+                </svg>
+                <span class="span-2 span-2--duration duration ml-small">30 mins</span>
+              </div>
+              <div class="sidebar__servingBlock">
+                <svg class="sidebar__icon sidebar__icon--2">
+                  <use href="a5b31aea14313b9616f228477251040d"></use>
+                </svg>
+                <span class="span-2 span-2--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar__box sidebar__box--2">
+            <img src="428b4fbbe6ddefe2f6b068cda22ec58d" alt="img1" class="sidebar__img">
+            <div class="sidebar__title">
+              <h3 class="header-3 publisher">Ryan Jones</h3>
+              <span class="span-2 title">Delicious muffins</span>
+            </div>
+            <div class="sidebar__info">
+              <div class="sidebar__durationBlock">
+                <svg class="sidebar__icon sidebar__icon--1">
+                  <use href="ca7432ec7108c25add9ae0aece4e78b3"></use>
+                </svg>
+                <span class="span-2 span-2--duration duration ml-small">30 mins</span>
+              </div>
+              <div class="sidebar__servingBlock">
+                <svg class="sidebar__icon sidebar__icon--2">
+                  <use href="a5b31aea14313b9616f228477251040d"></use>
+                </svg>
+                <span class="span-2 span-2--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar__box sidebar__box--3">
+            <img src="428b4fbbe6ddefe2f6b068cda22ec58d" alt="img1" class="sidebar__img">
+            <div class="sidebar__title">
+              <h3 class="header-3 publisher">Beck Davis</h3>
+              <span class="span-2 title">Fruity pancake</span>
+            </div>
+            <div class="sidebar__info">
+              <div class="sidebar__durationBlock">
+                <svg class="sidebar__icon sidebar__icon--1">
+                  <use href="ca7432ec7108c25add9ae0aece4e78b3"></use>
+                </svg>
+                <span class="span-2 span-2--duration duration ml-small">30 mins</span>
+              </div>
+              <div class="sidebar__servingBlock">
+                <svg class="sidebar__icon sidebar__icon--2">
+                  <use href="a5b31aea14313b9616f228477251040d"></use>
+                </svg>
+                <span class="span-2 span-2--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar__box sidebar__box--3">
+            <img src="428b4fbbe6ddefe2f6b068cda22ec58d" alt="img1" class="sidebar__img">
+            <div class="sidebar__title">
+              <h3 class="header-3 publisher">Beck Davis</h3>
+              <span class="span-2 title">Fruity pancake</span>
+            </div>
+            <div class="sidebar__info">
+              <div class="sidebar__durationBlock">
+                <svg class="sidebar__icon sidebar__icon--1">
+                  <use href="ca7432ec7108c25add9ae0aece4e78b3"></use>
+                </svg>
+                <span class="span-2 span-2--duration duration ml-small">30 mins</span>
+              </div>
+              <div class="sidebar__servingBlock">
+                <svg class="sidebar__icon sidebar__icon--2">
+                  <use href="a5b31aea14313b9616f228477251040d"></use>
+                </svg>
+                <span class="span-2 span-2--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+          <div class="sidebar__box sidebar__box--3">
+            <img src="428b4fbbe6ddefe2f6b068cda22ec58d" alt="img1" class="sidebar__img">
+            <div class="sidebar__title">
+              <h3 class="header-3 publisher">Beck Davis</h3>
+              <span class="span-2 title">Fruity pancake</span>
+            </div>
+            <div class="sidebar__info">
+              <div class="sidebar__durationBlock">
+                <svg class="sidebar__icon sidebar__icon--1">
+                  <use href="ca7432ec7108c25add9ae0aece4e78b3"></use>
+                </svg>
+                <span class="span-2 span-2--duration duration ml-small">30 mins</span>
+              </div>
+              <div class="sidebar__servingBlock">
+                <svg class="sidebar__icon sidebar__icon--2">
+                  <use href="a5b31aea14313b9616f228477251040d"></use>
+                </svg>
+                <span class="span-2 span-2--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+          <div class="sidebar__box sidebar__box--3">
+            <img src="428b4fbbe6ddefe2f6b068cda22ec58d" alt="img1" class="sidebar__img">
+            <div class="sidebar__title">
+              <h3 class="header-3 publisher">Beck Davis</h3>
+              <span class="span-2 title">Fruity pancake</span>
+            </div>
+            <div class="sidebar__info">
+              <div class="sidebar__durationBlock">
+                <svg class="sidebar__icon sidebar__icon--1">
+                  <use href="ca7432ec7108c25add9ae0aece4e78b3"></use>
+                </svg>
+                <span class="span-2 span-2--duration duration ml-small">30 mins</span>
+              </div>
+              <div class="sidebar__servingBlock">
+                <svg class="sidebar__icon sidebar__icon--2">
+                  <use href="a5b31aea14313b9616f228477251040d"></use>
+                </svg>
+                <span class="span-2 span-2--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="landing">
+        <div class="landing__content">
+          <div class="landing__left">
+            <h1 class="header-1a">Thinking of what to cook?</h1>
+            <span class="span-1 mb-small">Find the best recipes at a click of a button from the largest
+              database</span>
+            <form class="search">
+              <input class="search__input" type="text" placeholder="ready for yummy recipes?">
+            </form>
+          </div>
+
+          <div class="landing__right">
+            <img src="24240fb4aba296fac339960da58a568b" alt="landing image" class="landing__img">
+          </div>
+        </div>
+      </div>
+
+      <div class="content recipe">
+        <!-- <div class="content__content">
+          <div class="content__preview">
+            <img src="src/img/food-1.jpg" alt="img1" class="content__img" />
+            <div class="content__title">
+              <h3 class="header-2 publisher">Ryan Jones</h3>
+              <span class="span-3 title">Delicious muffins</span>
+            </div>
+
+            <div class="content__info">
+              <div class="content__durationBlock">
+                <svg class="content__icon content__icon--1">
+                  <use href="src/img/sprite.svg#icon-stopwatch"></use>
+                </svg>
+                <span class="span-3 span-3--duration duration ml-small"
+                  >30 mins</span
+                >
+              </div>
+              <div class="content__servingBlock">
+                <svg class="content__icon content__icon--2">
+                  <use href="src/img/sprite.svg#icon-users"></use>
+                </svg>
+                <span class="span-3 span-3--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+          <div class="content__preview">
+            <img src="src/img/food-1.jpg" alt="img1" class="content__img" />
+            <div class="content__title">
+              <h3 class="header-2 publisher">Ryan Jones</h3>
+              <span class="span-3 title">Delicious muffins</span>
+            </div>
+
+            <div class="content__info">
+              <div class="content__durationBlock">
+                <svg class="content__icon content__icon--1">
+                  <use href="src/img/sprite.svg#icon-stopwatch"></use>
+                </svg>
+                <span class="span-3 span-3--duration duration ml-small"
+                  >30 mins</span
+                >
+              </div>
+              <div class="content__servingBlock">
+                <svg class="content__icon content__icon--2">
+                  <use href="src/img/sprite.svg#icon-users"></use>
+                </svg>
+                <span class="span-3 span-3--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+          <div class="content__preview">
+            <img src="src/img/food-1.jpg" alt="img1" class="content__img" />
+            <div class="content__title">
+              <h3 class="header-2 publisher">Ryan Jones</h3>
+              <span class="span-3 title">Delicious muffins</span>
+            </div>
+
+            <div class="content__info">
+              <div class="content__durationBlock">
+                <svg class="content__icon content__icon--1">
+                  <use href="src/img/sprite.svg#icon-stopwatch"></use>
+                </svg>
+                <span class="span-3 span-3--duration duration ml-small"
+                  >30 mins</span
+                >
+              </div>
+              <div class="content__servingBlock">
+                <svg class="content__icon content__icon--2">
+                  <use href="src/img/sprite.svg#icon-users"></use>
+                </svg>
+                <span class="span-3 span-3--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+          <div class="content__preview">
+            <img src="src/img/food-1.jpg" alt="img1" class="content__img" />
+            <div class="content__title">
+              <h3 class="header-2 publisher">Ryan Jones</h3>
+              <span class="span-3 title">Delicious muffins</span>
+            </div>
+
+            <div class="content__info">
+              <div class="content__durationBlock">
+                <svg class="content__icon content__icon--1">
+                  <use href="src/img/sprite.svg#icon-stopwatch"></use>
+                </svg>
+                <span class="span-3 span-3--duration duration ml-small"
+                  >30 mins</span
+                >
+              </div>
+              <div class="content__servingBlock">
+                <svg class="content__icon content__icon--2">
+                  <use href="src/img/sprite.svg#icon-users"></use>
+                </svg>
+                <span class="span-3 span-3--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+          <div class="content__preview">
+            <img src="src/img/food-1.jpg" alt="img1" class="content__img" />
+            <div class="content__title">
+              <h3 class="header-2 publisher">Ryan Jones</h3>
+              <span class="span-3 title">Delicious muffins</span>
+            </div>
+
+            <div class="content__info">
+              <div class="content__durationBlock">
+                <svg class="content__icon content__icon--1">
+                  <use href="src/img/sprite.svg#icon-stopwatch"></use>
+                </svg>
+                <span class="span-3 span-3--duration duration ml-small"
+                  >30 mins</span
+                >
+              </div>
+              <div class="content__servingBlock">
+                <svg class="content__icon content__icon--2">
+                  <use href="src/img/sprite.svg#icon-users"></use>
+                </svg>
+                <span class="span-3 span-3--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+          <div class="content__preview">
+            <img src="src/img/food-1.jpg" alt="img1" class="content__img" />
+            <div class="content__title">
+              <h3 class="header-2 publisher">Ryan Jones</h3>
+              <span class="span-3 title">Delicious muffins</span>
+            </div>
+
+            <div class="content__info">
+              <div class="content__durationBlock">
+                <svg class="content__icon content__icon--1">
+                  <use href="src/img/sprite.svg#icon-stopwatch"></use>
+                </svg>
+                <span class="span-3 span-3--duration duration ml-small"
+                  >30 mins</span
+                >
+              </div>
+              <div class="content__servingBlock">
+                <svg class="content__icon content__icon--2">
+                  <use href="src/img/sprite.svg#icon-users"></use>
+                </svg>
+                <span class="span-3 span-3--servings servings ml-small">4</span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="pagination">
+          <button class="btn--page pagination--prev mr-small">2</button>
+          <button class="btn--page pagination--next ml-small">3</button>
+        </div> -->
+      </div>
+
+      <div class="overlay hidden"></div>
+      <div class="popup__content hidden">
+        <!-- <figure class="popup__fig">
+          <img src="src/img/food-1.jpg" alt="Test" class="popup__img" />
+        </figure>
+        <div class="popup__title">
+          <h1 class="header-2 header-2--sp mr-small">Delicious Burger</h1>
+          <span class="span-1">Ryan Baker</span>
+        </div>
+        <div class="popup__controller">
+          <div class="popup__durationBlock">
+            <svg class="popup__icon popup__icon--1">
+              <use href="src/img/sprite.svg#icon-stopwatch"></use>
+            </svg>
+            <span class="span-3 span-3--duration duration ml-small"
+              >30 mins</span
+            >
+          </div>
+          <div class="popup__servingBlock">
+            <svg class="popup__icon popup__icon--2">
+              <use href="src/img/sprite.svg#icon-users"></use>
+            </svg>
+            <span class="span-3 span-3--servings servings ml-small">4</span>
+            <div class="popup__btns ml-small">
+              <button class="btn--add btn--controller">
+                <svg class="popup__icon popup__icon--3">
+                  <use href="src/img/sprite.svg#icon-plus"></use>
+                </svg>
+              </button>
+
+              <button class="btn--minus btn--controller">
+                <svg class="popup__icon popup__icon--3">
+                  <use href="src/img/sprite.svg#icon-minus"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button class="btn--book">
+            <svg class="popup__icon popup__icon--3">
+              <use href="src/img/sprite.svg#icon-bookmark"></use>
+            </svg>
+          </button>
+        </div>
+
+        <div class="popup__ingredients">
+          <h2 class="header-2">Ingredients</h2>
+          <ul class="popup__ingredients--list">
+            <li class="popup__recipe">
+              <div class="popup__quantity">1</div>
+              <div class="popup__description">tbsp. canola or olive oil</div>
+            </li>
+            <li class="popup__recipe">
+              <div class="popup__quantity">2</div>
+              <div class="popup__description">tbsp. canola or olive oil</div>
+            </li>
+            <li class="popup__recipe">
+              <div class="popup__quantity">3</div>
+              <div class="popup__description">tbsp. canola or olive oil</div>
+            </li>
+            <li class="popup__recipe">
+              <div class="popup__quantity">4</div>
+              <div class="popup__description">tbsp. canola or olive oil</div>
+            </li>
+            <li class="popup__recipe">
+              <div class="popup__quantity">6</div>
+              <div class="popup__description">tbsp. canola or olive oil</div>
+            </li>
+          </ul>
+        </div>
+        <div class="popup__directions">
+          <a href="#" class="btn--direction popup__btn"><span>Directions</span></a>
+        </div> -->
+      </div>
+
+      <div class="footer">
+        <div class="footer__content">
+          <h1 class="header-1">Cook It 1.0</h1>
+          <span class="span-1">Andy Dev</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

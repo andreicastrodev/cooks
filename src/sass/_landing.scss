@@ -1,0 +1,33 @@
+.landing {
+  grid-column: full-start  / full-end;
+  background-color: #ffe5ec;
+  border-bottom-left-radius: 10rem;
+  padding-top: 5rem;
+grid-row: 2 / 4;
+
+  &__img {
+    width: 90%;
+    display: block;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: 29em) {
+      flex-direction: column;
+    }
+  }
+
+  &__left {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+  }
+
+  &__right {
+    flex: 0 0 50%;
+  }
+}

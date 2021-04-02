@@ -1,0 +1,56 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _View = _interopRequireDefault(require("./View.js"));
+
+var _sprite = _interopRequireDefault(require("url:../../img/sprite.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// parcel 2
+class ResultView extends _View.default {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "_parentElement", document.querySelector(".content__content"));
+
+    _defineProperty(this, "_errorMessage", `We could not find that recipe, Please try again`);
+  }
+
+  _generateMarkup() {
+    return this._data.map(this._generateMarkupPreview).join("");
+  }
+
+  _generateMarkupPreview(result) {
+    anime({
+      targets: `.content__preview`,
+      easing: "easeOutExpo",
+      duration: 3000,
+      translateX: [-400, 0],
+      delay: (el, i) => {
+        return 1000 + 500 * i;
+      }
+    });
+    return `
+         <a class="content__preview" href="#${result.id}">
+            <img src="${result.image}" alt="img1" class="content__img" />
+            <div class="content__title">
+              <h3 class="header-2 publisher">${result.title}</h3>
+              <span class="span-3 title">${result.publisher}</span>
+            </div>
+
+          </a>
+      `;
+  }
+
+}
+
+var _default = new ResultView();
+
+exports.default = _default;

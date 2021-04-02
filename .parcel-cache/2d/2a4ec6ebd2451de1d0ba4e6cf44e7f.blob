@@ -1,0 +1,34 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _View = _interopRequireDefault(require("./View.js"));
+
+var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class AnimationView extends _View.default {
+  constructor() {
+    super();
+    this.AnimateSidebar();
+  }
+
+  AnimateSidebar() {
+    (0, _animeEs.default)({
+      targets: `.sidebar`,
+      translateX: [-400, 0],
+      easing: "easeOutExpo",
+      duration: 3000,
+      opacity: [0, 1]
+    });
+  }
+
+}
+
+var _default = new AnimationView();
+
+exports.default = _default;

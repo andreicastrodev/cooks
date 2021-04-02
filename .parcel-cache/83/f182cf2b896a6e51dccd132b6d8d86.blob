@@ -1,0 +1,64 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _View = _interopRequireDefault(require("./View.js"));
+
+var _sprite = _interopRequireDefault(require("url:../../img/sprite.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// parcel 2
+class PaginationView extends _View.default {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "_parentElement", document.querySelector(`.pagination`));
+  }
+
+  addHandlerCLick(handler) {
+    this._parentElement.addEventListener(`click`, function (e) {
+      let btn;
+
+      if (e.target.classList.contains(`btn--page`)) {
+        btn = e.target;
+        console.log(btn);
+      } else return;
+    });
+  }
+
+  _generateMarkup() {
+    const curPage = this._data.page;
+    const numPages = Math.ceil(this._data.result.length / this._data.resultsPerPage);
+    console.log(numPages); // page 1 and there are other pages
+
+    if (curPage === 1 && numPages > 1) {
+      return `<button class="btn--page pagination--next ml-small">${curPage + 1}</button>`;
+    } // last page
+
+
+    if (curPage === numPages && numPages > 1) {
+      return `<button class="btn--page pagination--prev mr-small">${curPage - 1}</button>`;
+    } // other page
+
+
+    if (curPage < numPages) {
+      return `<button class="btn--page pagination--prev mr-small">${curPage - 1}</button>
+      
+      <button class="btn--page pagination--next ml-small">${curPage + 1}</button>`;
+    } // page 1 and there are no other pages
+
+
+    return "";
+  }
+
+}
+
+var _default = new PaginationView();
+
+exports.default = _default;

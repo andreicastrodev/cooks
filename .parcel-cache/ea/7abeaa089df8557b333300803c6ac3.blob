@@ -1,0 +1,141 @@
+"use strict";
+
+require("core-js/modules/es.typed-array.float32-array.js");
+
+require("core-js/modules/es.typed-array.float64-array.js");
+
+require("core-js/modules/es.typed-array.int8-array.js");
+
+require("core-js/modules/es.typed-array.int16-array.js");
+
+require("core-js/modules/es.typed-array.int32-array.js");
+
+require("core-js/modules/es.typed-array.uint8-array.js");
+
+require("core-js/modules/es.typed-array.uint8-clamped-array.js");
+
+require("core-js/modules/es.typed-array.uint16-array.js");
+
+require("core-js/modules/es.typed-array.uint32-array.js");
+
+require("core-js/modules/es.typed-array.from.js");
+
+require("core-js/modules/es.typed-array.of.js");
+
+require("core-js/modules/web.immediate.js");
+
+require("core-js/modules/web.url.js");
+
+require("core-js/modules/web.url.to-json.js");
+
+require("core-js/modules/web.url-search-params.js");
+
+var model = _interopRequireWildcard(require("./model.js"));
+
+var _recipeView = _interopRequireDefault(require("./view/recipeView.js"));
+
+var _searchView = _interopRequireDefault(require("./view/searchView.js"));
+
+var _resultView = _interopRequireDefault(require("./view/resultView.js"));
+
+var _bookmarkView = _interopRequireDefault(require("./view/bookmarkView.js"));
+
+var _paginationView = _interopRequireDefault(require("./view/paginationView.js"));
+
+var _animationView = _interopRequireDefault(require("./view/animationView.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+if (module.hot) {
+  module.hot.accept();
+}
+
+const controlRecipes = async function () {
+  try {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+
+    _recipeView.default.renderSpinner(); // load recipe
+
+
+    await model.loadRecipe(id); // show the recipe
+
+    _recipeView.default.showWindow(); // render recipe
+
+
+    _recipeView.default.render(model.state.recipe);
+  } catch (err) {
+    _recipeView.default.renderError();
+  }
+};
+
+const controlSearchResults = async function () {
+  try {
+    _resultView.default.renderSpinner(); // 1) Get search query
+
+
+    const query = _searchView.default.getQuery();
+
+    if (!query) return; // 2) Load search results
+
+    await model.loadSearchResults(query); // 3) Render Results
+
+    _animationView.default.AnimateResults();
+
+    _resultView.default.render(model.getSearchResultPage()); // 4) render initial pagination BUTTON
+
+
+    _paginationView.default.render(model.state.search);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const controlPagination = function (goToPage) {
+  // 3) Render NEW Results
+  _resultView.default.render(model.getSearchResultPage(goToPage)); // 4) render NEW pagination BUTTON
+
+
+  _paginationView.default.render(model.state.search);
+};
+
+const controlServings = function (newServings) {
+  // update recipe servings in (state)
+  model.updateServings(newServings); // update the recipe view
+
+  _recipeView.default.update(model.state.recipe);
+};
+
+const controlAddBookmark = function () {
+  // 1 add / remove bookmrka
+  if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);else model.deleteBookmark(model.state.recipe.id); // 2 updte recipe view
+
+  _recipeView.default.update(model.state.recipe); // renderbookmrk
+
+
+  _bookmarkView.default.render(model.state.bookmarks);
+};
+
+const controlBookmarks = function () {
+  _bookmarkView.default.render(model.state.bookmarks);
+};
+
+const init = function () {
+  _bookmarkView.default.addHandlerRender(controlBookmarks);
+
+  _recipeView.default.addHandlerRender(controlRecipes);
+
+  _recipeView.default.addHandlerUpdateServings(controlServings);
+
+  _recipeView.default.addHandlerBookmark(controlAddBookmark);
+
+  _searchView.default.addHandlerSearch(controlSearchResults);
+
+  _paginationView.default.addHandlerCLick(controlPagination);
+};
+
+init();

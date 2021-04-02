@@ -1,0 +1,30 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _View = _interopRequireDefault(require("./View.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class ViewAnimation {
+  constructor() {
+    this.AnimateSidebar();
+  }
+
+  AnimateSidebar() {
+    document.addEventListener(`DOMContentLoaded`, () => {
+      anime({
+        targets: ".sidebar",
+        translateX: [-400, 0]
+      });
+    });
+  }
+
+}
+
+var _default = new ViewAnimation();
+
+exports.default = _default;
